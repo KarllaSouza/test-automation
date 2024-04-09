@@ -19,10 +19,8 @@ Projeto de automação de testes web com Selenium webDriver e java.
           * "features" -> arquivos de BDD (.feature) carabesa
 
 # Versões
-- Cucumber 7.14.0
-- Selenium 4.12.0
-- Junit 4.13.1
-- Assertj-core 3.24.2
 - Cluecumber-report 2.9.4 -> Geração de relatórios - gera informações mais completas, porém o relatório só é gerado quando rodado no terminal (com.trivago.rta)
 - Maven-surefire 3.2.5 -> Geração de relatórios
-- Maven-compiler-plugin 3.7.0
+
+- Chrome 123.0.6312.105 macos
+- Firefox (geckodriver) 0.34.0 macos
