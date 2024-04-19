@@ -10,4 +10,4 @@
       E que acessei a tela de login
       Quando eu preencher as credenciais
       E clicar para realizar login
-      Então devo ver a mensagem de login realizado com sucesso
+      Então devo ver um modal com a mensagem de login realizado com sucesso
