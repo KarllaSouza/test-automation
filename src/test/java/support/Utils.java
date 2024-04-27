@@ -1,5 +1,7 @@
 package support;
 
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -10,8 +12,8 @@ import java.util.Random;
 
 public class Utils extends RunCucumberTest {
 
-    public void waitElementBePresent(By element, Integer tempo){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(tempo));
+    public void waitElementBePresent(By element, Integer time){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
@@ -25,6 +27,11 @@ public class Utils extends RunCucumberTest {
         int result = random.nextInt(high-low) + low;
 
         return emailInit + result + emailFinal;
+    }
+
+    public String getRandomPassword() {
+        String password = RandomStringUtils.random(8, true, true);
+        return password;
     }
 
 

@@ -19,7 +19,7 @@ public class LoginPage extends Utils {
 
     public void siteAccess() throws InterruptedException {
         driver.get("https://automationpratice.com.br/");
-        Thread.sleep(500);
+        Thread.sleep(100);
     }
 
     public void loginScreenAccess(){
@@ -29,26 +29,28 @@ public class LoginPage extends Utils {
         Assert.assertTrue(driver.findElement(By.id("password")).isDisplayed());
     }
 
-    public void fillEmail(){
-        driver.findElement(emailField).sendKeys("projectautomation_9887@souza.com.br");
+    public void fillEmail(String email){
+        driver.findElement(emailField).sendKeys(email);
     }
 
-    public void fillPassword(){
-        driver.findElement(passwordField).sendKeys("12345678");
+    public void fillPassword(String password){
+        driver.findElement(passwordField).sendKeys(password);
     }
 
     public void clickLoginButton() throws InterruptedException {
-        Thread.sleep(800);
+        Thread.sleep(600);
         driver.findElement(loginButton).click();
     }
 
     public void modalSuccessLogin() throws InterruptedException {
         waitElementBePresent(messageSuccessLogin,300);
         Assert.assertTrue(driver.findElement(By.id("swal2-html-container")).isDisplayed());
-        //Assertions.assertThat(messageSuccessLogin).isNotBlank();
-        Assertions.assertThat(messageSuccessLogin.equals("Login realizado"));
-        //Assert.assertEquals(true, messageSuccessLogin.contains("Login realizado"));
+
+        String messageSuccessLoginSite = driver.findElement(messageSuccessLogin).getText();
+        Assertions.assertThat(messageSuccessLoginSite).isNotBlank();
+        Assert.assertTrue(messageSuccessLoginSite.contains("Login realizado"));
+
         Assert.assertTrue(driver.findElement(By.className("swal2-confirm")).isDisplayed());
-        Thread.sleep(500);
+        Thread.sleep(100);
     }
 }

@@ -9,28 +9,28 @@ public class LoginStepsDef extends RunCucumberTest {
     LoginPage loginPage = new LoginPage(driver);
 
     @Dado("que acessei o site")
-    public void acessoAoSite() throws InterruptedException {
+    public void accessTheSite() throws InterruptedException {
         loginPage.siteAccess();
     }
 
     @E("que acessei a tela de login")
-    public void acesseiTelaDeLogin() {
+    public void accessTheLoginScreen() {
         loginPage.loginScreenAccess();
     }
 
     @Quando("eu preencher as credenciais")
-    public void preencherCredenciais(){
-        loginPage.fillEmail();
-        loginPage.fillPassword();
+    public void fillInTheLoginFields(){
+        loginPage.fillEmail("projectautomation_9887@souza.com.br");
+        loginPage.fillPassword("12345678");
     }
 
     @E("clicar para realizar login")
-    public void clicarParaRealizarLogin() throws InterruptedException {
+    public void ClickToDoLogin() throws InterruptedException {
         loginPage.clickLoginButton();
     }
 
     @Entao("devo ver um modal com a mensagem de login realizado com sucesso")
-    public void verMensagemDeLoginComSucesso() throws InterruptedException {
+    public void seeTheSuccessLoginMessage() throws InterruptedException {
         loginPage.modalSuccessLogin();
     }
 
