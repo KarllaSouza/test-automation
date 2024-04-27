@@ -16,7 +16,7 @@ Projeto de automação de testes web com Selenium webDriver e java.
           * "steps" -> arquivos com os passos do BDD
           * "support" -> arquivos que podem ser reutilizados em outras partes do projeto
         * "resources"
-          * "features" -> arquivos de BDD (.feature) carabesa
+          * "features" -> arquivos de BDD (.feature)
 
 # Versões
 - Cluecumber-report 2.9.4 -> Geração de relatórios - gera informações mais completas, porém o relatório só é gerado quando rodado no terminal (com.trivago.rta)
