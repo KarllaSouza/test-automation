@@ -4,7 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.api.Assertions;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import runner.RunCucumberTest;
+import runner_files.RunCucumberTest;
 import support.Utils;
 
 public class RegisterPage extends RunCucumberTest {

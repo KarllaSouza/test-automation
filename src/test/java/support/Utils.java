@@ -4,7 +4,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import runner.RunCucumberTest;
+import runner_files.RunCucumberTest;
 
 import java.time.Duration;
 import java.util.Random;
