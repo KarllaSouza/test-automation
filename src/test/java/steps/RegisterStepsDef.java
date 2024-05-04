@@ -2,7 +2,7 @@ package steps;
 
 import io.cucumber.java.pt.*;
 import pages.RegisterPage;
-import runner.RunCucumberTest;
+import main.RunCucumberTest;
 
 public class RegisterStepsDef extends RunCucumberTest {
 
