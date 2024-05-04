@@ -3,7 +3,7 @@ package pages;
 import org.assertj.core.api.Assertions;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import runner.RunCucumberTest;
+import main.RunCucumberTest;
 import support.Utils;
 
 public class LoginPage extends RunCucumberTest {

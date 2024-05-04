@@ -12,7 +12,7 @@ Projeto de automação de testes web com Selenium webDriver e java.
       * Pasta "test" -> Pasta criada por padrão
         * Pasta "java" -> Pasta criada por padrão
           * "pages" -> page objects
-          * "runner" -> executor do projeto, o que chama a execução dos testes
+          * "main" -> executor do projeto, o que chama a execução dos testes
           * "steps" -> arquivos com os passos do BDD
           * "support" -> arquivos que podem ser reutilizados em outras partes do projeto
         * "resources"
