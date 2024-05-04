@@ -1,14 +1,16 @@
 package pages;
 
+import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.api.Assertions;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import runner.RunCucumberTest;
 import support.Utils;
 
-public class RegisterPage extends Utils {
+public class RegisterPage extends RunCucumberTest {
 
-    WebDriver driver;
+    String email = Utils.getRandomEmail();
+    String nameOfUser = Utils.getRandomUserName();
 
     private By createUserNameField = By.id("user");
     private By createEmailField = By.id("email");
@@ -20,45 +22,48 @@ public class RegisterPage extends Utils {
     private By successCreateModalButton = By.className("swal2-actions");
     private By accountArea = By.id("my-account_area");
 
-    public RegisterPage(WebDriver driver) {
-        this.driver = driver;
+    public void registerScreenAccess() {
+        getDriver().get("https://automationpratice.com.br/register");
     }
 
-    public void registerScreenAccess(){
-        driver.get("https://automationpratice.com.br/register");
+    public void fillUserNameCreate(String userName) {
+        Utils.waitElementBePresent(createEmailField,300);
+        String finalName = StringUtils.isBlank(userName) ? nameOfUser : userName;
+        getDriver().findElement(createUserNameField).sendKeys(finalName);
     }
 
-    public void fillUserNameCreate(String userName){
-        waitElementBePresent(createEmailField,300);
-        driver.findElement(createUserNameField).sendKeys(userName);
+    public void fillEmailCreate() {
+        getDriver().findElement(createEmailField).sendKeys(email);
     }
 
-    public void fillEmailCreate(){
-        driver.findElement(createEmailField).sendKeys(getRandomEmail());
-    }
-
-    public void fillPasswordCreate(){
-        driver.findElement(createPasswordField).sendKeys(getRandomPassword());
+    public void fillPasswordCreate() {
+        getDriver().findElement(createPasswordField).sendKeys(Utils.getRandomPassword());
     }
 
     public void clickCreateUserButton() throws InterruptedException {
         Thread.sleep(300);
-        driver.findElement(createUserButton).click();
+        getDriver().findElement(createUserButton).click();
     }
 
-    public void successRegisterMessage () {
-        waitElementBePresent(successCreateIcon, 100);
-        Assertions.assertThat(successCreateMessage.equals("Cadastro realizado!"));
-        Assert.assertTrue(driver.findElement(successCreateMessageWelcome).isDisplayed());
+    public void checkTheUser(String userName){
+        String userLogged = getDriver().findElement(By.id("userLogged")).getText();
+        String finalName = StringUtils.isBlank(userName) ? nameOfUser : userName;
+        Assert.assertEquals(finalName, userLogged);
+    }
 
-        String messageWelcomeSite = driver.findElement(successCreateMessageWelcome).getText();
+    public void successRegisterMessage() {
+        Utils.waitElementBePresent(successCreateIcon, 100);
+        Assertions.assertThat(successCreateMessage.equals("Cadastro realizado!"));
+        Assert.assertTrue(getDriver().findElement(successCreateMessageWelcome).isDisplayed());
+
+        String messageWelcomeSite = getDriver().findElement(successCreateMessageWelcome).getText();
         Assert.assertTrue(messageWelcomeSite.contains("Bem-vindo"));
 
-        Assert.assertTrue(driver.findElement(successCreateModalButton).isDisplayed());
+        Assert.assertTrue(getDriver().findElement(successCreateModalButton).isDisplayed());
 
-        driver.findElement(successCreateModalButton).click();
-        waitElementBePresent(accountArea, 100);
-        Assert.assertTrue(driver.findElement(accountArea).isDisplayed());
+        getDriver().findElement(successCreateModalButton).click();
+        Utils.waitElementBePresent(accountArea, 100);
+        Assert.assertTrue(getDriver().findElement(accountArea).isDisplayed());
     }
 
 }

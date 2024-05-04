@@ -3,54 +3,50 @@ package pages;
 import org.assertj.core.api.Assertions;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import runner.RunCucumberTest;
 import support.Utils;
 
-public class LoginPage extends Utils {
-    WebDriver driver;
+public class LoginPage extends RunCucumberTest {
     private By emailField = By.id("user");
     private By passwordField = By.id("password");
     private By loginButton = By.id("btnLogin");
     private By messageSuccessLogin = By.id("swal2-title");
 
-    public LoginPage(WebDriver driver) {
-        this.driver = driver;
-    }
 
     public void siteAccess() throws InterruptedException {
-        driver.get("https://automationpratice.com.br/");
+        getDriver().get("https://automationpratice.com.br/");
         Thread.sleep(100);
     }
 
     public void loginScreenAccess(){
-        driver.findElement(By.xpath("//*[@id=\"top_header\"]/div/div/div[2]/div/ul/li[1]/a")).click();
-        waitElementBePresent(emailField,150);
-        Assert.assertTrue(driver.findElement(By.id("user")).isDisplayed());
-        Assert.assertTrue(driver.findElement(By.id("password")).isDisplayed());
+        getDriver().findElement(By.xpath("//*[@id=\"top_header\"]/div/div/div[2]/div/ul/li[1]/a")).click();
+        Utils.waitElementBePresent(emailField,150);
+        Assert.assertTrue(getDriver().findElement(By.id("user")).isDisplayed());
+        Assert.assertTrue(getDriver().findElement(By.id("password")).isDisplayed());
     }
 
     public void fillEmail(String email){
-        driver.findElement(emailField).sendKeys(email);
+        getDriver().findElement(emailField).sendKeys(email);
     }
 
     public void fillPassword(String password){
-        driver.findElement(passwordField).sendKeys(password);
+        getDriver().findElement(passwordField).sendKeys(password);
     }
 
     public void clickLoginButton() throws InterruptedException {
         Thread.sleep(600);
-        driver.findElement(loginButton).click();
+        getDriver().findElement(loginButton).click();
     }
 
     public void modalSuccessLogin() throws InterruptedException {
-        waitElementBePresent(messageSuccessLogin,300);
-        Assert.assertTrue(driver.findElement(By.id("swal2-html-container")).isDisplayed());
+        Utils.waitElementBePresent(messageSuccessLogin,300);
+        Assert.assertTrue(getDriver().findElement(By.id("swal2-html-container")).isDisplayed());
 
-        String messageSuccessLoginSite = driver.findElement(messageSuccessLogin).getText();
+        String messageSuccessLoginSite = getDriver().findElement(messageSuccessLogin).getText();
         Assertions.assertThat(messageSuccessLoginSite).isNotBlank();
         Assert.assertTrue(messageSuccessLoginSite.contains("Login realizado"));
 
-        Assert.assertTrue(driver.findElement(By.className("swal2-confirm")).isDisplayed());
+        Assert.assertTrue(getDriver().findElement(By.className("swal2-confirm")).isDisplayed());
         Thread.sleep(100);
     }
 }

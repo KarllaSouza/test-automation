@@ -2,13 +2,24 @@ package steps;
 
 import io.cucumber.java.pt.*;
 import pages.LoginPage;
+import runner.RunBase;
 import runner.RunCucumberTest;
 
 public class LoginStepsDef extends RunCucumberTest {
 
-    LoginPage loginPage = new LoginPage(driver);
+    LoginPage loginPage = new LoginPage();
 
-    @Dado("que acessei o site")
+    @Dado("que abri um navegador chrome")
+    public void openBrowserChrome() {
+        getDriver(RunBase.Browser.CHROME);
+    }
+
+    @Dado("que abri um navegador firefox")
+    public void openBrowserFirefox() {
+        getDriver(RunBase.Browser.FIREFOX);
+    }
+
+    @E("acessei o site")
     public void accessTheSite() throws InterruptedException {
         loginPage.siteAccess();
     }
@@ -33,8 +44,5 @@ public class LoginStepsDef extends RunCucumberTest {
     public void seeTheSuccessLoginMessage() throws InterruptedException {
         loginPage.modalSuccessLogin();
     }
-
-
-
 
 }

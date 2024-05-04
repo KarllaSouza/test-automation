@@ -1,7 +1,6 @@
 package support;
 
 import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -12,12 +11,12 @@ import java.util.Random;
 
 public class Utils extends RunCucumberTest {
 
-    public void waitElementBePresent(By element, Integer time){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
+    public static void waitElementBePresent(By element, Integer time){
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(time));
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public String getRandomEmail(){
+    public static String getRandomEmail(){
         String emailInit = "projectautomation_";
         String emailFinal = "@souza.com.br";
 
@@ -29,9 +28,14 @@ public class Utils extends RunCucumberTest {
         return emailInit + result + emailFinal;
     }
 
-    public String getRandomPassword() {
+    public static String getRandomPassword() {
         String password = RandomStringUtils.random(8, true, true);
         return password;
+    }
+
+    public static String getRandomUserName() {
+        String userName = RandomStringUtils.randomAlphabetic(3, 10);
+        return userName;
     }
 
 

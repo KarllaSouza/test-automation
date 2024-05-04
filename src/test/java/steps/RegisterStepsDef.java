@@ -6,7 +6,8 @@ import runner.RunCucumberTest;
 
 public class RegisterStepsDef extends RunCucumberTest {
 
-    RegisterPage registerPage = new RegisterPage(driver);
+    RegisterPage registerPage = new RegisterPage();
+    String userName;
 
     @Dado("acessei a tela de cadastro de usuário")
     public void accessTheUserRegisterScreen() {
@@ -14,7 +15,7 @@ public class RegisterStepsDef extends RunCucumberTest {
     }
     @Quando("eu preencher o formulário de cadastro")
     public void fillInTheRegisterForm() {
-        registerPage.fillUserNameCreate("Karlla");
+        registerPage.fillUserNameCreate(userName);
         registerPage.fillEmailCreate();
         registerPage.fillPasswordCreate();
     }
@@ -25,5 +26,6 @@ public class RegisterStepsDef extends RunCucumberTest {
     @Entao("devo ver a mensagem de cadastro realizado com sucesso")
     public void seeTheSuccessRegisterMessage() {
         registerPage.successRegisterMessage();
+        registerPage.checkTheUser(userName);
     }
 }
