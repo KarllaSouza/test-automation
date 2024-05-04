@@ -2,8 +2,8 @@ package steps;
 
 import io.cucumber.java.pt.*;
 import pages.LoginPage;
-import runner_files.RunBase;
-import runner_files.RunCucumberTest;
+import runner.RunBase;
+import runner.RunCucumberTest;
 
 public class LoginStepsDef extends RunCucumberTest {
 
