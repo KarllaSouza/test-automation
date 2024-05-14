@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         //plugin = {},
         features = "src/test/resources/features",
-        tags = "@editar_dados",
+        tags = "",
         glue = {"steps"}
 )
 

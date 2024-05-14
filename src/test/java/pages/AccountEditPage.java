@@ -21,7 +21,7 @@ public class AccountEditPage extends RunCucumberTest {
     private By newPassword = By.id("new_password");
     private By confirmNewPassword = By.id("re_password");
     private By updateAccountAfterEditionsButton = By.xpath("//*[@id=\"account_info_form\"]/button");
-    private By emailInProfile = By.cssSelector("#vendor_area > div > div > div.col-sm-12.col-md-12.col-lg-9 > div > div > div > ul > li:nth-child(2) > div > div.profile_right > h4");
+    private By emailInProfile = By.cssSelector("#vendor_area > div > div > div.col-sm-12.col-md-12.col-lg-9 > div > div > div > ul > li:nth-child(2) > div > div.profile_right");
     private By userImageInsertButton = By.cssSelector("#account_edit > div > div:nth-child(2) > div.col-lg-3 > div > div > div > input[type=file]");
     private By profileTitlePage = By.cssSelector("#vendor_area > div > div > div.col-sm-12.col-md-12.col-lg-9 > div > div > div > h4");
     public By profileArea = By.id("vendor_area");
@@ -88,7 +88,8 @@ public class AccountEditPage extends RunCucumberTest {
     }
 
     public void validateThatAllEditionsAreSaved(){
-        //Assert.assertEquals(userEmail, getDriver().findElement(emailInProfile).getText());
+        Utils.waitElementBePresent(profileArea,100);
+        //Assert.assertEquals(userEmail, getDriver().findElement(emailInProfile).getText()); //The correct way to verify
         String emailAddressInProfile = getDriver().findElement(emailInProfile).getText(); //It's fix on site
         Assert.assertTrue(emailAddressInProfile.contains("demo123@gmail.com"));
     }
@@ -99,11 +100,6 @@ public class AccountEditPage extends RunCucumberTest {
         String titlePage = getDriver().findElement(profileTitlePage).getText();
         Assert.assertTrue(titlePage.contains("Profile"));
     }
-
-    //    @E("uma mensagem de sucesso deve ser exibida")
-    //    public void uma_mensagem_de_sucesso_deve_ser_exibida() {}
-
-
 
     public void insertAnImage(String pathFile){
         getDriver().findElement(userImageInsertButton).isDisplayed();
