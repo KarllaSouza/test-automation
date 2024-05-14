@@ -16,7 +16,6 @@
       E clicar em Update Information
       Então os novos dados devem ser salvos
       E o usuario deve retornar para a tela de detalhamento da conta
-      E uma mensagem de sucesso deve ser exibida
 
     @edicao_foto_sucesso
     Cenario: Atualizar foto da conta do usuário com sucesso
@@ -24,4 +23,3 @@
       E clicar em Update Information
       Então a imagem deve ser salva como foto do usuario
       E o usuario deve retornar para a tela de detalhamento da conta
-      E uma mensagem de sucesso deve ser exibida

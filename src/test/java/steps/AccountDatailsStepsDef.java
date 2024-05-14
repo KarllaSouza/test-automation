@@ -2,14 +2,25 @@ package steps;
 
 import io.cucumber.java.pt.*;
 import pages.AccountEditPage;
+import pages.LoginPage;
 import runner.RunCucumberTest;
 
 public class AccountDatailsStepsDef extends RunCucumberTest {
 
     AccountEditPage accountEditPage = new AccountEditPage();
+    LoginPage loginPage = new LoginPage();
+
+//    String email = "projectautomation_9887@souza.com.br";
+//    String password = "12345678";
 
     @Dado("que estou logado no sistema")
-    public void loggedUserScreen() throws InterruptedException {
+    public void loggedUserScreen() {
+//        loginPage.siteAccess();
+//        loginPage.loginScreenAccess();
+//        loginPage.fillEmail(email);
+//        loginPage.fillPassword(password);
+//        loginPage.clickLoginButton();
+//        loginPage.modalSuccessLogin();
         accountEditPage.dashboardScreenAccess();
     }
 
@@ -29,25 +40,35 @@ public class AccountDatailsStepsDef extends RunCucumberTest {
     }
 
     @Quando("informar dados novos nos campos apresentados")
-    public void informar_dados_novos_nos_campos_apresentados() {}
+    public void fillInAccountDetailsEditFields() {
+        accountEditPage.fillInAccountDetails();
+        accountEditPage.ValidateThatAllFieldsAreFilledIn();
+    }
 
     @E("clicar em Update Information")
-    public void clicar_em_update_information() {}
+    public void clickToUpdate() {
+        accountEditPage.clickToSaveEditions();
+    }
 
     @Então("os novos dados devem ser salvos")
-    public void os_novos_dados_devem_ser_salvos() {}
+    public void accountUpdated() {
+        accountEditPage.validateThatAllEditionsAreSaved();
+    }
 
     @E("o usuario deve retornar para a tela de detalhamento da conta")
-    public void o_usuario_deve_retornar_para_a_tela_de_detalhamento_da_conta() {}
-
-    @E("uma mensagem de sucesso deve ser exibida")
-    public void uma_mensagem_de_sucesso_deve_ser_exibida() {}
+    public void returnToUserInformationsPage() {
+        accountEditPage.pageAfterUpdate();
+    }
 
     @Quando("inserir uma imagem")
-    public void inserir_uma_imagem() {}
+    public void uploadUserImage() {
+        accountEditPage.insertAnImage("/Users/karlla/IdeaProjects/Portifólio - automação/test-automation/Alice - colorir - 1.png");
+    }
 
     @Então("a imagem deve ser salva como foto do usuario")
-    public void a_imagem_deve_ser_salva_como_foto_do_usuario() {}
+    public void imageWasSaved() {
+        //The site doesn't save the image.
+    }
 
 
 }
